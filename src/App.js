@@ -40,7 +40,7 @@ const callClaude = async (messages, system, useSearch = false, imageBase64 = nul
   };
   if (useSearch) body.tools = [{ type: "web_search_20250305", name: "web_search" }];
 
-  const response = await fetch("/api/claude", {
+  const response = await fetch("/.netlify/functions/claude", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -182,7 +182,7 @@ function SnapToLog({ onConfirm, onCancel }) {
     setImagePreview(URL.createObjectURL(file));
 
     try {
-      const response = await fetch("/api/claude", {
+      const response = await fetch("/.netlify/functions/claude", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
